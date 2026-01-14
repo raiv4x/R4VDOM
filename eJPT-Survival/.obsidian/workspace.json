@@ -1,0 +1,249 @@
+{
+  "main": {
+    "id": "8fa3a61766a531ab",
+    "type": "split",
+    "children": [
+      {
+        "id": "530aa32d49f83061",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ba3ae22a9c03eb76",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "eJPT LABS/LAB 2. Enumeration CTF 1.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "LAB 2. Enumeration CTF 1"
+            }
+          },
+          {
+            "id": "73ec8cefed01d033",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "eJPT SURVIVAL GUIDE/2. Enumeration/SMB/fzshare.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "fzshare"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "66ca00579a080512",
+    "type": "split",
+    "children": [
+      {
+        "id": "7e805d84d8bdf2f2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f650f8e65a8dd0ed",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "db85268b62a0a593",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "fuzz",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "a29d165d69da35df",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "07734e178e7563a5",
+    "type": "split",
+    "children": [
+      {
+        "id": "55435d56a6c8d469",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c9f22c46ee716675",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "eJPT SURVIVAL GUIDE/1. Methodology & Recon/RECON/Nmap.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Nmap"
+            }
+          },
+          {
+            "id": "404b766a54f84dfd",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "eJPT SURVIVAL GUIDE/1. Methodology & Recon/RECON/Nmap.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Nmap"
+            }
+          },
+          {
+            "id": "d062a7559b2a2b91",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "38ad0267a5873cc9",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "901da044bfbd2af3",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "eJPT SURVIVAL GUIDE/1. Methodology & Recon/RECON/Nmap.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Nmap"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "73ec8cefed01d033",
+  "lastOpenFiles": [
+    "eJPT LABS/LAB 3. Vulnerability Assessment CTF 1.md",
+    "eJPT SURVIVAL GUIDE/2. Enumeration/WEB/MAIN - Enumeración WEB.md",
+    "eJPT SURVIVAL GUIDE/2. Enumeration/SMTP/MAIN - Enumeración SMTP.md",
+    "eJPT SURVIVAL GUIDE/2. Enumeration/MAIN - Enumeración.md",
+    "eJPT SURVIVAL GUIDE/1000. Herramientas/hydra.md",
+    "eJPT SURVIVAL GUIDE/1. Methodology & Recon/RECON/Nmap.md",
+    "eJPT SURVIVAL GUIDE/1. Methodology & Recon/METHODOLOGY/RAVX CHECKLIST.md",
+    "IMGS/Pasted image 20260109225252.png",
+    "IMGS/Pasted image 20260110112401.png",
+    "IMGS/Pasted image 20260110112211.png",
+    "IMGS/Pasted image 20260110111942.png",
+    "IMGS/Pasted image 20260110111630.png",
+    "IMGS/Pasted image 20260110111618.png",
+    "IMGS/Pasted image 20260110111422.png",
+    "IMGS/Pasted image 20260110111242.png",
+    "IMGS/Pasted image 20260110111123.png",
+    "IMGS/Pasted image 20260110111028.png",
+    "eJPT SURVIVAL GUIDE/1000. Herramientas/gobuster.md",
+    "eJPT SURVIVAL GUIDE/1000. Herramientas/ffuf.md",
+    "eJPT SURVIVAL GUIDE/Brute Force.md",
+    "1. Telnet.md",
+    "eJPT LABS/LAB 2. Enumeration CTF 1.md",
+    "IMGS",
+    "eJPT SURVIVAL GUIDE/2. Enumeration/SMB/fzshare.md",
+    "eJPT SURVIVAL GUIDE/2. Enumeration/SMB/MAIN - Enumeración SMB.md",
+    "eJPT SURVIVAL GUIDE/2. Enumeration/SMB/enum4linux.md",
+    "eJPT SURVIVAL GUIDE/1000. Herramientas/Netcat.md",
+    "eJPT SURVIVAL GUIDE/2. Enumeration/SQL/MAIN - Enumeración SQL.md",
+    "eJPT SURVIVAL GUIDE/2. Enumeration/SMTP",
+    "eJPT SURVIVAL GUIDE/2. Enumeration/FTP/MAIN - Enumeración FTP.md",
+    "eJPT SURVIVAL GUIDE/2. Enumeration/MySQL/Untitled",
+    "eJPT SURVIVAL GUIDE/2. Enumeration/SQL",
+    "eJPT SURVIVAL GUIDE/1000. Herramientas/Dirbuster.md",
+    "eJPT SURVIVAL GUIDE/1000. Herramientas",
+    "eJPT SURVIVAL GUIDE/1000. Herramientas/wfuzz.md",
+    "eJPT SURVIVAL GUIDE/2. Enumeration/SMB/smbmap.md",
+    "eJPT SURVIVAL GUIDE/2. Enumeration/WEB",
+    "eJPT SURVIVAL GUIDE/2. Enumeration/SMB/smbclient.md",
+    "eJPT LABS/Enum",
+    "eJPT LABS/SMB",
+    "eJPT LABS",
+    "eJPT SURVIVAL GUIDE/1. Methodology & Recon/METHODOLOGY/Metodología y Preparación de Entorno.md",
+    "eJPT SURVIVAL GUIDE/2. Enumeration/SMB",
+    "eJPT SURVIVAL GUIDE.md"
+  ]
+}
