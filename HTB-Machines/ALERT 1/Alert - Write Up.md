@@ -34,7 +34,7 @@ nmap -sS --open -p- --min-rate 5000 -n -Pn <ip> -vvv -oG GenPort_scan
 nmap -sCV -p<puertos_encontrados> <ip> -oN DetPort_scan
 ```
 
-![[Pasted image 20251024083001.png]]
+![](../imgs/Pasted image 20251024083001.png)
 
 
 Descubrimos que el puerto **22** y **80** están abiertos.  **El puerto 22** es una **versión 8.2** y por tanto no es vulnerable a algunos exploits que encontramos en **[[searchsploit]]** por ejemplo el **User enumeration 
@@ -46,19 +46,19 @@ Ahora proseguimos a checar el **Launchpad** para ver los codenames.
 
 **Una vez habiendo hecho esto** proseguimos a lanzar con [[wfuzz]] y con [[GoBuster]] descubrimientos de rutas y subdominios. 
 
-![[Pasted image 20251024083106.png]]
+![](../imgs/Pasted image 20251024083106.png)
 
 **Messages** = Forbidden
 
-![[Pasted image 20251024083159.png]]
+![](../imgs/Pasted image 20251024083159.png)
 
 **statistics.alert.htb** 
-![[Pasted image 20251024083323.png]]
+![](../imgs/Pasted image 20251024083323.png)
 ##### SEGUNDA FASE: Explotación
 
 mpezamos la inspección del sitió y **empezamos a probar cosas**
 
-![[Pasted image 20251024083035.png]]
+![](../imgs/Pasted image 20251024083035.png)
 Empeazamos inpsecciónando la web y encontramos que utiliza formato **markdown**, además **tenemos un panel para subir jarchivos .md** 
 
 **Subimos un archivo .md y lo interpreta**. Además intentamos con **[[Directory Path Traversal]]**, **[[Wrappers]]**... especialmente...
@@ -69,7 +69,7 @@ file:///etc/psswd
 
 **Como no encontramos nada** decidimos subir un archivo **[[Javascript]]** Y vimos que hay posibilidad de **[[XSS]]**. **El archivo al ser súbido daba una URL**  y al ser compartida, el script se seguía ejecutando. 
 
-![[Pasted image 20251024084131.png]]
+![](../imgs/Pasted image 20251024084131.png)
 
 ```javascript
 
@@ -77,7 +77,7 @@ file:///etc/psswd
 	alert(1)
 </script>
 ```
-![[Pasted image 20251024084224.png]]
+![](../imgs/Pasted image 20251024084224.png)
 *en el codigo fuente venía la url*
 
 De acuerdo a la pagina **en la sección *contact us* y *about us*** hay alguien que siempre revisa los mensajes.
@@ -85,7 +85,7 @@ De acuerdo a la pagina **en la sección *contact us* y *about us*** hay alguien 
 **Proseguimos a subir un archivo .md** para ver si alguien revisaba el archivo y podíamos de esa manera ver **messages.php** Y ver si podemos ver los mensajes
 
 
-![[Pasted image 20251024084622.png]]
+![](../imgs/Pasted image 20251024084622.png)
 
 **Primero levantamos un servidor en python3**
 ```bash
@@ -102,7 +102,7 @@ lo guardamos como **.md** lo subimos y en la pagina.
 
 **La web nos devuelve la url** y como es vulnerable a [[XSS]] se la podemos envíar a quien sea que esté del otro lado, **de esa manera el script se ejecutará y mandará una petición a nuestro servidor** 
 
-![[Pasted image 20251024084716.png]]
+![](../imgs/Pasted image 20251024084716.png)
 *En este caso va a mandar una petición a* http://10.10.16.6/pwn.js
 
 Ahora, como nos interesa ver  **messages.php**  creamos **pwn.js**
@@ -121,32 +121,32 @@ exfil.send();
 
 Cuando subimos el archivo y nosotros mismos lo ejecutamos vemos que recibimos una solicitud en nuestro servidor, **ahora proseguimos a enviarlo al admin** de esa manera recibimos una respuesta: **la decodificamos en base 64** y leemos lo que hay. 
 
-![[Pasted image 20251024091604.png]]
+![](../imgs/Pasted image 20251024091604.png)
 
 A partir del recurso que nos devuelve **messages.php?file=** con algo. Por lo que ahora, **modificamos el pwn.js** y tratamos de hacer un [[Directory Path Traversal]] a partir del recurso que nos devolvió. 
 
-![[Pasted image 20251024091650.png]]
+![](../imgs/Pasted image 20251024091650.png)
 
 **Nos devolvió el [[etc-passwd]]** por lo que fue exitosa la filtración de archivos de sistemas, **además aprovechamos para enumerar unos cuantos usuarios** . **Ahora podemos intentar buscar id_rsa** para ver si nos podemos conectarnos con **SSH**
 
-![[Pasted image 20251024092629.png]]
+![](../imgs/Pasted image 20251024092629.png)
 
 No encontramos nada por lo que ahora **proseguimos a buscar** archivos de **configuración** por lo que ahora buscamos en **[[etc-apache2]]** a ver si podemos sacar algo de información en **/sites-available/000-default.conf**
 
 en **statistics.alert.htb** encontramos un panel que nos pide usuario y contraseña. Y en el **000-default.conf** encontramos **una ruta que posiblemente contenga las credenciales que necesitamos**. Por lo que aprovechando la XSS leemos lo que hay en esa ruta.
 
-![[Pasted image 20251024093035.png]]
+![](../imgs/Pasted image 20251024093035.png)
 
 **Encontramos un usuario y una contraseña** por lo que proseguimos a usar [[hashcat]] para crackear el hash. 
 
-![[Pasted image 20251024093436.png]]
+![](../imgs/Pasted image 20251024093436.png)
 
 ```bash
 
 hashcat hash /usr/share/wordlists/rockyou.txt --user
 ```
 
-![[Pasted image 20251024093534.png]]
+![](../imgs/Pasted image 20251024093534.png)
 Una vez que crackeamos el **Hash** tenemos acceso a la página, y además **descubrimos que podemos reutilizar la passwd** para conectarnos por **SSH**. 
 
 **Una vez que ganamos accesso por SSH** toca escalar privilegios.
@@ -156,11 +156,11 @@ Una vez que crackeamos el **Hash** tenemos acceso a la página, y además **desc
 
 Empezamos a **buscar vectores** con [[Comandos utiles para escalar]], y nos encontramos **pertenceciamos al grupo "managemente"** y además
 
-![[Pasted image 20251024110915.png]]
+![](../imgs/Pasted image 20251024110915.png)
 
 encontramos que el puerto **8080** estaba abierto, por lo que cuando lanzamos un `curl` nos devuelve un **HTML**.
 
-![[Pasted image 20251024111200.png]]
+![](../imgs/Pasted image 20251024111200.png)
 **Además** vemos que pertenecemos al grupo **Management** lo cual nos da una pista para buscar. 
 
 ```bash
@@ -169,9 +169,9 @@ find / -group management -type d -writable 2>/dev/null
 ```
 
 **Aplicamos [[Port Forwarding]] de manera local** y vemos que corré una nueva página interna. Que se llama igual a la ruta que entcontramos anteriormente. 
-![[Pasted image 20251024110514.png]]
+![](../imgs/Pasted image 20251024110514.png)
 
-![[Pasted image 20251024111308.png]]
+![](../imgs/Pasted image 20251024111308.png)
 
 Monitor es básicamente una página corriendo en el puerto **8080** además vemos que es **la ruta a la que tenemos escritura y pertenecemos al grupo**
 
@@ -179,9 +179,9 @@ Monitor es básicamente una página corriendo en el puerto **8080** además vemo
 
 **Creamos un .php le damos permisos SUID a la bash y listo**
 
-![[Pasted image 20251024112602.png]]
+![](../imgs/Pasted image 20251024112602.png)
 
-![[Pasted image 20251024112614.png]]
+![](../imgs/Pasted image 20251024112614.png)
 
 
-![[Pasted image 20251024112639.png]]
+![](../imgs/Pasted image 20251024112639.png)

