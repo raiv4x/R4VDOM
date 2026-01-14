@@ -1,3 +1,9 @@
+---
+layout: default
+title: Home
+nav_order: 1
+---
+
 # 💀 R4VDOM - Security & Pentesting Lab
 
 Bienvenido a mi repositorio central de ciberseguridad. Aquí documento mi camino hacia la certificación eJPT y mis auditorías en máquinas de HackTheBox.

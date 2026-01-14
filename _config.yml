@@ -1,0 +1,10 @@
+title: R4VDOM
+description: "Pentesting Lab & eJPT Notes"
+remote_theme: just-the-docs/just-the-docs
+
+# Configuración para que se vea modo oscuro (Hacker style)
+color_scheme: dark
+
+# Esto permite que GitHub Pages use el tema sin instalar nada
+plugins:
+  - jekyll-remote-theme
