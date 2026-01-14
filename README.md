@@ -1,8 +1,3 @@
----
-layout: default
-title: Home
-nav_order: 1
----
 
 # 💀 R4VDOM - Security & Pentesting Lab
 
