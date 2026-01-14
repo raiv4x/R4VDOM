@@ -3,6 +3,9 @@
 - Tags: #Bashscript #Herramienta #SMB #Fuzzing
 - -- 
 
+#Script destinado a fuzzear rutas de shares con acceso NULO ej: \\10.10.10.10\FUZZ
+
+
 ```bash
 #!/bin/bash
 
