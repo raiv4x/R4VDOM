@@ -1,0 +1,231 @@
+{
+  "main": {
+    "id": "8fa3a61766a531ab",
+    "type": "split",
+    "children": [
+      {
+        "id": "77d64f6487ff252c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "80c8856d73d1f9b6",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "66ca00579a080512",
+    "type": "split",
+    "children": [
+      {
+        "id": "7e805d84d8bdf2f2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f650f8e65a8dd0ed",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "db85268b62a0a593",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "a29d165d69da35df",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 205.50418853759766
+  },
+  "right": {
+    "id": "07734e178e7563a5",
+    "type": "split",
+    "children": [
+      {
+        "id": "55435d56a6c8d469",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c9f22c46ee716675",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "eJPT SURVIVAL GUIDE/1. Methodology & Recon/RECON/Nmap.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Nmap"
+            }
+          },
+          {
+            "id": "404b766a54f84dfd",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "eJPT SURVIVAL GUIDE/1. Methodology & Recon/RECON/Nmap.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Nmap"
+            }
+          },
+          {
+            "id": "d062a7559b2a2b91",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "38ad0267a5873cc9",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "901da044bfbd2af3",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "eJPT SURVIVAL GUIDE/1. Methodology & Recon/RECON/Nmap.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Nmap"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "f650f8e65a8dd0ed",
+  "lastOpenFiles": [
+    "eJPT-SURVIVAL/7. Web Applications/HTTP Protocol/HTTP.md",
+    "Apache/Nginx.md",
+    "eJPT SURVIVAL GUIDE/3.Host Based Attacks/Linux/Service Exploitation/Explotación SAMBA.md",
+    "eJPT SURVIVAL GUIDE/3.Host Based Attacks/Windows/Service Exploitation/Explotación SMB.md",
+    "eJPT SURVIVAL GUIDE/1000. Herramientas/enum4linux.md",
+    "eJPT SURVIVAL GUIDE/2. Enumeration/SMTP/MAIN - Enumeración SMTP.md",
+    "eJPT SURVIVAL GUIDE/3.Host Based Attacks/Windows/Service Exploitation/Explotación RDP.md",
+    "eJPT SURVIVAL GUIDE/3.Host Based Attacks/Windows/Service Exploitation/Explotación WebDAV.md",
+    "eJPT SURVIVAL GUIDE/1000. Herramientas/cadaver.md",
+    "eJPT SURVIVAL GUIDE/4. Network Based Attacks/Exploitation Techniques/ARP Spoofing.md",
+    "eJPT SURVIVAL GUIDE/1000. Herramientas/wpscan.md",
+    "eJPT SURVIVAL GUIDE/1000. Herramientas/hydra.md",
+    "eJPT SURVIVAL GUIDE/2. Enumeration/FTP/MAIN - Enumeración FTP.md",
+    "eJPT LABS/LAB 5/LAB 5. Host Based Attacks CTF 1.md",
+    "eJPT SURVIVAL GUIDE/7. Web Applications/HTTP Protocol/HTTP.md",
+    "eJPT SURVIVAL GUIDE/7. Web Applications/HTTP Protocol/Métodos HTTP.md",
+    "eJPT SURVIVAL GUIDE/7. Web Applications/MAIN - Web Applications.md",
+    "eJPT SURVIVAL GUIDE/7. Web Applications/HTTP Protocol",
+    "IMGS/Pasted image 20260131211509.png",
+    "eJPT SURVIVAL GUIDE/1000. Herramientas/procmon.sh.md",
+    "IMGS/Pasted image 20260131190939.png",
+    "eJPT SURVIVAL GUIDE/5. Post-Exploitation/MAIN - Pivoting.md",
+    "eJPT SURVIVAL GUIDE/7. Web Applications",
+    "eJPT SURVIVAL GUIDE/5. Post-Exploitation/Linux/Linux System Enumeration.md",
+    "eJPT SURVIVAL GUIDE/5. Post-Exploitation/Linux/Persistencia/Linux Persistence.md",
+    "IMGS/Pasted image 20260131185722.png",
+    "eJPT SURVIVAL GUIDE/5. Post-Exploitation/Windows/Persistencia/Windows  Persistence.md",
+    "eJPT SURVIVAL GUIDE/5. Post-Exploitation/Linux/Persistencia",
+    "eJPT SURVIVAL GUIDE/3.Host Based Attacks/Linux/MAIN - Host Based Attacks - Linux.md",
+    "eJPT SURVIVAL GUIDE/6. Transferencia de Archivos/Transferencia de Archivos Linux.md",
+    "eJPT SURVIVAL GUIDE/5. Post-Exploitation/Windows/Persistencia",
+    "eJPT SURVIVAL GUIDE/6. Transferencia de Archivos/Transferencia de Archivos a Windows.md",
+    "eJPT SURVIVAL GUIDE/6. Transferencia de Archivos",
+    "eJPT SURVIVAL GUIDE/5. Post-Exploitation/Windows/Windows System Enumeration.md",
+    "IMGS/Pasted image 20260130213541.png",
+    "eJPT SURVIVAL GUIDE/5. Post-Exploitation/Linux",
+    "eJPT SURVIVAL GUIDE/5. Post-Exploitation/Windows",
+    "eJPT SURVIVAL GUIDE/5. Post-Exploitation",
+    "IMGS/Pasted image 20260130222215.png",
+    "IMGS/Pasted image 20260130221859.png",
+    "IMGS/Pasted image 20260130221815.png",
+    "IMGS/Pasted image 20260130221751.png",
+    "IMGS/Pasted image 20260130221621.png",
+    "IMGS/Pasted image 20260130221541.png",
+    "eJPT LABS/Host and Network Penetration Testing - Exploitation CTF 1",
+    "eJPT SURVIVAL GUIDE/4. Network Based Attacks/Shells"
+  ]
+}
